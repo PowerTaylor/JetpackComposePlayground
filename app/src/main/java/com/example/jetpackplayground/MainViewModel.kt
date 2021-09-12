@@ -39,12 +39,8 @@ private val DefaultList = listOf(
 
 class MainViewModel : ViewModel() {
 
-    private val _viewState = MutableStateFlow(ViewState.Content())
+    private val _viewState = MutableStateFlow(ViewState.Content(fields = DefaultList))
     val viewState = _viewState.asStateFlow()
-
-    init {
-        _viewState.value = ViewState.Content(fields = DefaultList)
-    }
 
     fun onFormInputEntered(field: Field, newValue: String) {
         val fields = viewState.value.fields.toMutableList()
